@@ -37,6 +37,14 @@ function addItem(e){
 
   // Append li to list
   itemList.appendChild(li);
+
+  //Add edit button
+  var editBtn = document.createElement('button');
+  editBtn.className = 'btn btn-outline-primary btn-sm float-right edit';
+  editBtn.appendChild(document.createTextNode('Edit'));
+  li.appendChild(editBtn);
+  itemList.appendChild(li);
+  
 }
 
 // Remove item
@@ -48,6 +56,8 @@ function removeItem(e){
     }
   }
 }
+
+
 
 // Filter Items
 function filterItems(e){
