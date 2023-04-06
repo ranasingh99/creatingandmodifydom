@@ -8,3 +8,12 @@ itemList.firstElementChild.textContent = 'firstLi1'
 itemList.lastChild.textContent='lastchild';
 //lastElementChild
 itemList.lastElementChild.style.backgroundColor = 'yellow';
+//nextsibling
+console.log(itemList.nextSibling);
+//nextElementSibling
+console.log(itemList.nextElementSibling);
+//previousSibling
+console.log(itemList.previousSibling);
+//previousElementSibling
+console.log(itemList.previousElementSibling);
+itemList.previousElementSibling.style.color = 'blue';
