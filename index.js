@@ -6,6 +6,8 @@ var filter = document.getElementById('filter');
 form.addEventListener('submit', addItem);
 // Delete event
 itemList.addEventListener('click', removeItem);
+//Description event
+//form.addEventListener('submit',includeDescription);
 // Filter event
 filter.addEventListener('keyup', filterItems);
 
@@ -15,6 +17,7 @@ function addItem(e){
 
   // Get input value
   var newItem = document.getElementById('item').value;
+  var description = document.getElementById('description').value;
 
   // Create new li element
   var li = document.createElement('li');
@@ -22,6 +25,7 @@ function addItem(e){
   li.className = 'list-group-item';
   // Add text node with input value
   li.appendChild(document.createTextNode(newItem));
+  li.appendChild(document.createTextNode(" "+description));
 
   // Create del button element
   var deleteBtn = document.createElement('button');
@@ -41,9 +45,9 @@ function addItem(e){
   //Add edit button
   var editBtn = document.createElement('button');
   editBtn.className = 'btn btn-outline-primary btn-sm float-right edit';
-  editBtn.appendChild(document.createTextNode('Edit'));
-  li.appendChild(editBtn);
-  itemList.appendChild(li);
+   editBtn.appendChild(document.createTextNode('Edit'));
+   li.appendChild(editBtn);
+   itemList.appendChild(li);
   
 }
 
@@ -57,7 +61,14 @@ function removeItem(e){
   }
 }
 
-
+//Assignment 
+// function includeDescription(e){
+//   e.preventDefault();
+// var description = document.getElementById('description').value;
+// var li = document.createElement('li');
+// li.className = 'list-group-item';
+// li.appendChild(document.createTextNode(description));
+// }
 
 // Filter Items
 function filterItems(e){
@@ -65,10 +76,12 @@ function filterItems(e){
   var text = e.target.value.toLowerCase();
   // Get lis
   var items = itemList.getElementsByTagName('li');
+  
   // Convert to an array
   Array.from(items).forEach(function(item){
     var itemName = item.firstChild.textContent;
-    if(itemName.toLowerCase().indexOf(text) != -1){
+    var description = item.childNodes[1].textContent;
+    if(itemName.toLowerCase().indexOf(text) != -1 || description.toLocaleLowerCase().indexOf(text)!= -1){
       item.style.display = 'block';
     } else {
       item.style.display = 'none';
